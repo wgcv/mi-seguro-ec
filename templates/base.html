@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0097B2" />
+  <meta name="description" content="Asesores de seguros en Ecuador. Seguros individuales, corporativos y masivos." />
+  <title>{% block title %}Mi Seguro - Seguros de Confianza{% endblock %}</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  {% include "partials/navbar.html" %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+  {% include "partials/whatsapp.html" %}
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <!-- Sync main padding-top with actual fixed header height -->
+  <script>
+    (function () {
+      function updateHeaderOffset() {
+        var h = document.querySelector('.site-header');
+        if (h) {
+          document.documentElement.style.setProperty('--header-height', h.offsetHeight + 'px');
+        }
+      }
+      updateHeaderOffset();
+      window.addEventListener('resize', updateHeaderOffset);
+    })();
+  </script>
+
+  <!-- Mobile Menu Toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.getElementById('mobile-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+
+      if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+          menu.classList.toggle('is-open');
+          const isOpen = menu.classList.contains('is-open');
+          openIcon.style.display = isOpen ? 'none' : 'block';
+          closeIcon.style.display = isOpen ? 'block' : 'none';
+          toggle.setAttribute('aria-label', isOpen ? 'Cerrar menu' : 'Abrir menu');
+        });
+
+        // Close menu on link click
+        menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.remove('is-open');
+            openIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+          });
+        });
+      }
+    });
+  </script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

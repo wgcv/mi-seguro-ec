@@ -1,0 +1,102 @@
+{% load static %}
+<!-- ============================================
+     FOOTER (partials/footer.html)
+     ============================================ -->
+<footer id="contacto" class="site-footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Column 1: About -->
+        <div class="footer-col footer-about">
+          <a href="{% url 'home:index' %}" class="logo" style="margin-bottom:1rem;display:inline-flex">
+            <div class="logo-icon" style="width:2rem;height:2rem;font-size:0.875rem">G</div>
+            <span style="color:#fff;font-family:var(--font-heading);font-weight:700;font-size:1.125rem">Mi Seguro</span>
+          </a>
+          <p>
+            Mi Seguro es tu aliado para contratar cualquier tipo de p&oacute;liza de seguros.
+            Nuestra empresa cumple la funci&oacute;n de representante de Asesor&iacute;a T&eacute;cnica y Personalizada,
+            ajustada a tu medida y a tus necesidades.
+          </p>
+        </div>
+
+        <!-- Column 2: Recent Posts -->
+        <div class="footer-col">
+          {% comment %} <h4>Nota Reciente</h4>
+          <div class="footer-posts">
+            {% for post in recent_posts %}
+            <div class="footer-post">
+              <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+              <p class="footer-post-date">{{ post.date|date:"d F, Y" }}</p>
+            </div>
+            {% empty %}
+            <div class="footer-post">
+              <a href="#noticias">Giorgio en 1k por la Familia y por Ti</a>
+              <p class="footer-post-date">12 febrero, 2023</p>
+            </div>
+            <div class="footer-post">
+              <a href="#noticias">Beneficios para socios de la C&aacute;mara de Comercio Ecuatoriano China</a>
+              <p class="footer-post-date">15 septiembre, 2021</p>
+            </div>
+            {% endfor %}
+          </div> {% endcomment %}
+        </div>
+
+        <!-- Column 3: Extra Links -->
+        <div class="footer-col">
+          {% comment %} <h4>Extra Links</h4>
+          <div class="footer-links">
+            <a href="#about">Somos</a>
+            <a href="#seguros">Seguros</a>
+            <a href="#noticias">Noticias</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contacto">Contacto</a>
+          </div> {% endcomment %}
+        </div>
+
+        <!-- Column 4: Search & Contact -->
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <div class="footer-contact">
+            <span class="footer-contact-item">
+              <i data-lucide="map-pin"></i>
+              Av. Malecón Simón Bolívar & Calle Roca
+            </span>
+            <span class="footer-contact-item">
+              <i data-lucide="phone"></i>
+              0993886877
+            </span>
+            <span class="footer-contact-item">
+              <i data-lucide="mail"></i>
+              info@miseguro.com.ec
+            </span>
+            <span class="footer-contact-item">
+              <i data-lucide="clock"></i>
+              Lun - Vie 8:30 - 17:00
+            </span>
+            <span class="footer-contact-item">
+              <i data-lucide="briefcase"></i>
+              Trabaja con Nosotros: rrhh@miseguro.com.ec
+            </span>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="social-links" style="margin-top:0">
+        <a href="https://www.facebook.com/p/Mi-Seguro-Ecuador-100063721834956/" class="social-link" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        {% comment %} <a href="#" class="social-link" aria-label="Twitter"><i data-lucide="twitter"></i></a> {% endcomment %}
+        {% comment %} <a href="#" class="social-link" aria-label="YouTube"><i data-lucide="youtube"></i></a> {% endcomment %}
+        <a href="https://www.instagram.com/miseguroecu" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        {% comment %} <a href="#" class="social-link" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a> {% endcomment %}
+      </div>
+      <p>&copy; <span id="footer-year"></span><script>document.getElementById('footer-year').textContent=new Date().getFullYear()</script> Copyright Mi Seguro By Pepperloop</p>
+      <p></p>
+    </div>
+  </div>
+</footer>

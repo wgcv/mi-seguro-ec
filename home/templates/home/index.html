@@ -1,0 +1,536 @@
+{% extends "base.html" %} {% load static %} {% block title %}Inicio | Mi Seguro
+EC{% endblock %} {% block content %}
+
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<section id="home" class="hero">
+  <div class="hero-bg">
+    <img
+      src="{% static 'img/home/hero.jpg' %}"
+      alt="Familia protegida por seguros Mi Seguro"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="text-balance">Mi Seguro<br />Ecuador</h1>
+      <p>Contra daños parciales y pérdidas totales.</p>
+      <div class="hero-buttons">
+        <a href="#seguros" class="btn btn-primary">M&aacute;s Info</a>
+        {% comment %} <a href="#contacto" class="btn btn-outline">Cotizar</a> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIVACY BANNER
+     ============================================ -->
+<section class="privacy-banner">
+  <div class="container">
+    <div class="privacy-left">
+      <div>
+        <h3>Profesionales con más de 10 años de experiencia.</h3>
+        <a href="#">
+          <i data-lucide="file-text" style="width: 16px; height: 16px"></i>
+          Ver pdf con todos nuestros servicios y coberturas.
+        </a>
+      </div>
+    </div>
+    <div class="privacy-right">
+      <i data-lucide="mail" style="width: 16px; height: 16px"></i>
+      <span>Información:</span>
+      <a
+        href="#"
+        onclick="
+          navigator.clipboard.writeText('info@miseguro.com.ec');
+          this.textContent = 'Se copio el correo a tu portapapeles';
+          setTimeout(() => (this.textContent = 'info@miseguro.com.ec'), 2000);
+          return false;
+        "
+        >info@miseguro.com.ec</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     INSURANCE CATEGORIES
+     ============================================ -->
+<section class="categories">
+  <div class="container">
+    <div class="categories-grid">
+      <a href="#seguros" class="category-card">
+        <div class="category-card-img">
+          <img
+            src="{% static 'img/home/family.jpg' %}"
+            alt="Seguros Individuales"
+          />
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <h3>Seguros Individuales</h3>
+          <p>Te asesoramos en planes de seguros personales.</p>
+        </div>
+      </a>
+      <a href="#seguros" class="category-card">
+        <div class="category-card-img">
+          <img
+            src="{% static 'img/home/massive.jpg' %}"
+            alt="Seguros Masivos"
+          />
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <h3>Seguros Masivos</h3>
+          <p>
+            Cont&aacute;ctanos para mayor informaci&oacute;n sobre cobertura
+            grupal.
+          </p>
+        </div>
+      </a>
+      <a href="#seguros" class="category-card">
+        <div class="category-card-img">
+          <img
+            src="{% static 'img/home/corporative.jpg' %}"
+            alt="Seguros Corporativos"
+          />
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <h3>Seguros Corporativos</h3>
+          <p>Te ofrecemos la mejor oferta de seguros empresariales.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     RAMOS DE SEGUROS
+     ============================================ -->
+<section id="seguros" class="ramos">
+  <div class="container">
+    <h2 class="text-balance">Ramos de Seguros</h2>
+    <div class="ramos-grid">
+      <div class="ramo-card">
+        <div class="ramo-icon"><i data-lucide="shield"></i></div>
+        <h3>Seguro de Desgravamen</h3>
+        <p>
+          Ante pago por tu deuda no se pueda cobrar a proteger a tu familia.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><i data-lucide="car"></i></div>
+        <h3>Seguro de vehículo</h3>
+        <p>
+          Ampara la p&eacute;rdida material de los objetos asegurados, producida
+          por un robo.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><i data-lucide="package"></i></div>
+        <h3>Seguro de Garant&iacute;a Aduanera</h3>
+        <p>
+          Ampara la falta de pago de derechos arancelarios, tasas, intereses y
+          multas.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><i data-lucide="tractor"></i></div>
+        <h3>Seguro Agropecuario</h3>
+        <p>
+          Protege tu inversi&oacute;n frente a p&eacute;rdidas y da&ntilde;os
+          imprevisibles en tus cultivos.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><i data-lucide="building"></i></div>
+        <h3>Seguro de Obras Civiles Terminadas</h3>
+        <p>
+          Indemnizaci&oacute;n sobre los da&ntilde;os y p&eacute;rdidas que los
+          bienes asegurados sufran.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><i data-lucide="landmark"></i></div>
+        <h3>Bancos e Instituciones Financieras</h3>
+        <p>
+          Seguro especializado sobre estafas, falsificaci&oacute;n de seguros
+          contra actos dolosos.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     A TU LADO BANNER
+     ============================================ -->
+<section class="a-tu-lado">
+  <div class="a-tu-lado-bg">
+    <img
+      src="{% static 'img/home/hero-2.jpg' %}"
+      alt="Familia feliz - Mi Seguro siempre a tu lado"
+    />
+    <div class="a-tu-lado-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="a-tu-lado-content">
+      <h2 class="text-balance">
+        A tu lado,<br />en cada momento acompa&ntilde;&aacute;ndote.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TESTIMONIALS
+     ============================================ -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="text-balance">Testimonios</h2>
+    <div class="testimonials-carousel">
+      <div class="testimonials-viewport">
+        <div class="testimonials-track">
+          <!-- testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              {% comment %}
+              <div class="testimonial-avatar">
+                <img
+                  src="{% static 'images/testimonial-1.jpg' %}"
+                  alt="Investcamp"
+                />
+              </div>
+              {% endcomment %}
+              <div>
+                <div class="testimonial-name">Giancarlo Zunino</div>
+                <div class="testimonial-role">Gerente General</div>
+                <div class="testimonial-role">Investcamp</div>
+              </div>
+            </div>
+            <div class="testimonial-quote">
+              <svg class="quote-icon" viewBox="0 0 24 24">
+                <path
+                  d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+                />
+                <path
+                  d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+                />
+              </svg>
+              <p>
+                Nuestro aliado en todo momento. Nuestros seguros empresariales
+                están definitivamente en buenas manos.
+              </p>
+            </div>
+          </div>
+          <!-- testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div>
+                <div class="testimonial-name">Magdalena Murillo</div>
+                <div class="testimonial-role">Directora ejecutiva</div>
+                <div class="testimonial-role">M&M Audvisory Partners</div>
+              </div>
+            </div>
+            <div class="testimonial-quote">
+              <svg class="quote-icon" viewBox="0 0 24 24">
+                <path
+                  d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+                />
+                <path
+                  d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+                />
+              </svg>
+              <p>Excelente soporte comercial y de servicio al cliente.</p>
+            </div>
+          </div>
+          <!-- testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div>
+                <div class="testimonial-name">Víctor Morales</div>
+                <div class="testimonial-role">Seguro de Salud Privado</div>
+              </div>
+            </div>
+            <div class="testimonial-quote">
+              <svg class="quote-icon" viewBox="0 0 24 24">
+                <path
+                  d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+                />
+                <path
+                  d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+                />
+              </svg>
+              <p>Mi seguro médico cubrió los gastos de emergencia de mi esposa. Mi Seguro Ecuador estuvo en todo momento. No dudé en contratar el plan también para mí y para mi hija. Ahora dormimos tranquilos, sabiendo que nuestra salud está en buenas manos.</p>
+            </div>
+          </div>
+          <!-- testimonial 4 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div>
+                <div class="testimonial-name">Carlos Carrillo</div>
+                <div class="testimonial-role">Seguro de Salud Privado</div>
+              </div>
+            </div>
+            <div class="testimonial-quote">
+              <svg class="quote-icon" viewBox="0 0 24 24">
+                <path
+                  d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+                />
+                <path
+                  d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+                />
+              </svg>
+              <p>Sufrí una rotura severa de ligamentos; jamás pensé que fuera a suceder. Hoy le doy gracias a Mi Seguro Ecuador por proteger mi patrimonio ante una cirugía que habría devastado mi economía.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="testimonials-dots" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PARTNERS
+     ============================================ -->
+<section class="partners">
+  <div class="container">
+    <h2 class="partners-title">Nuestros aliados</h2>
+    <div class="partners-row">
+      <span class="partner-name">Seguros Alianza</span>
+      <span class="partner-name">Seguros Cóndor</span>
+      <span class="partner-name">Sweaden</span>
+      <span class="partner-name">Hispana de Seguros</span>
+      <span class="partner-name">VAZ Seguros</span>
+      <span class="partner-name">AIG</span>
+      <span class="partner-name">Humana</span>
+      <span class="partner-name">Asisken</span>
+      <span class="partner-name">BMI</span>
+      <span class="partner-name">SaludSA</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA BANNER
+     ============================================ -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>
+      Ayudamos a nuestros clientes a actuar<br />
+      <span class="subtitle">de la mejor manera ante cualquier siniestro</span>
+    </h2>
+  </div>
+</section>
+
+<!-- ============================================
+     NEWS / NOTICIAS
+     ============================================ -->
+{% comment %}
+<section id="noticias" class="news">
+  <div class="container">
+    <h2 class="text-balance">Noticias</h2>
+    <div class="news-grid">
+      {% for article in articles %}
+      <a href="{{ article.get_absolute_url }}" class="news-card">
+        <div class="news-card-img">
+          <img src="{{ article.image.url }}" alt="{{ article.title }}" />
+        </div>
+        <div class="news-card-body">
+          <h3 class="line-clamp-3">{{ article.title }}</h3>
+          <div class="news-date">
+            <i data-lucide="calendar"></i>
+            {{ article.date|date:"d F, Y" }}
+          </div>
+        </div>
+      </a>
+      {% empty %}
+      <!-- Fallback static news -->
+      <a href="#" class="news-card">
+        <div class="news-card-img">
+          <img
+            src="{% static 'images/news-1.jpg' %}"
+            alt="Giorgio en 1k por la Familia"
+          />
+        </div>
+        <div class="news-card-body">
+          <h3 class="line-clamp-3">Giorgio en 1k por la Familia y por Ti</h3>
+          <div class="news-date">
+            <i data-lucide="calendar"></i>
+            12 febrero, 2023
+          </div>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="news-card-img">
+          <img
+            src="{% static 'images/news-2.jpg' %}"
+            alt="Beneficios C&aacute;mara de Comercio"
+          />
+        </div>
+        <div class="news-card-body">
+          <h3 class="line-clamp-3">
+            Beneficios para socios de la C&aacute;mara de Comercio Ecuatoriano
+            China
+          </h3>
+          <div class="news-date">
+            <i data-lucide="calendar"></i>
+            15 septiembre, 2021
+          </div>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="news-card-img">
+          <img
+            src="{% static 'images/news-3.jpg' %}"
+            alt="Convenci&oacute;n Mi Seguro"
+          />
+        </div>
+        <div class="news-card-body">
+          <h3 class="line-clamp-3">
+            Convenci&oacute;n Mi Seguro &ndash; Mompiche 2019
+          </h3>
+          <div class="news-date">
+            <i data-lucide="calendar"></i>
+            29 octubre, 2019
+          </div>
+        </div>
+      </a>
+      <a href="#" class="news-card">
+        <div class="news-card-img">
+          <img
+            src="{% static 'images/news-4.jpg' %}"
+            alt="Atentado Universidad de Guayaquil"
+          />
+        </div>
+        <div class="news-card-body">
+          <h3 class="line-clamp-3">
+            Atentado en la Universidad de Guayaquil causa da&ntilde;os a un
+            cliente GioVehiculos
+          </h3>
+          <div class="news-date">
+            <i data-lucide="calendar"></i>
+            13 junio, 2019
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endcomment %} {% endblock %} {% block extra_js %}
+<script>
+  (function () {
+    var viewport = document.querySelector(".testimonials-viewport");
+    var track = document.querySelector(".testimonials-track");
+    var dotsContainer = document.querySelector(".testimonials-dots");
+    if (!viewport || !track || !dotsContainer) return;
+
+    var cards = track.querySelectorAll(".testimonial-card");
+    var total = cards.length;
+    if (total === 0) return;
+
+    function getPerView() {
+      return window.matchMedia("(min-width: 768px)").matches ? 2 : 1;
+    }
+
+    function getNumPages() {
+      return Math.ceil(total / getPerView()) || 1;
+    }
+
+    function renderDots() {
+      dotsContainer.innerHTML = "";
+      var numPages = getNumPages();
+      if (numPages <= 1) return;
+      for (var i = 0; i < numPages; i++) {
+        var dot = document.createElement("span");
+        dot.className = "testimonials-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("data-index", i);
+        dot.setAttribute(
+          "aria-label",
+          "P\u00e1gina " + (i + 1) + " de " + numPages,
+        );
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    var index = 0;
+    var interval = 5000;
+    var timer;
+    var dots;
+
+    function goToPage(i) {
+      var numPages = getNumPages();
+      var perView = getPerView();
+      index = Math.max(0, Math.min(i, numPages - 1));
+      var isLastPageSingle =
+        numPages > 1 &&
+        perView === 2 &&
+        total % 2 === 1 &&
+        index === numPages - 1;
+      track.classList.toggle("last-page-single", isLastPageSingle);
+
+      var offsetPx = 0;
+      if (numPages > 1 && cards[index * perView]) {
+        offsetPx = cards[index * perView].offsetLeft;
+      }
+      track.style.transform = "translate3d(-" + offsetPx + "px, 0, 0)";
+
+      dots = dotsContainer.querySelectorAll(".testimonials-dot");
+      dots.forEach(function (d, j) {
+        d.classList.toggle("active", j === index);
+      });
+    }
+
+    function nextPage() {
+      var numPages = getNumPages();
+      goToPage((index + 1) % numPages);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      if (getNumPages() > 1) {
+        timer = setInterval(nextPage, interval);
+      }
+    }
+
+    function bindDots() {
+      dots = dotsContainer.querySelectorAll(".testimonials-dot");
+      dots.forEach(function (dot) {
+        dot.onclick = function () {
+          var i = parseInt(this.getAttribute("data-index"), 10);
+          goToPage(i);
+          resetTimer();
+        };
+      });
+    }
+
+    function init() {
+      renderDots();
+      goToPage(0);
+      bindDots();
+      resetTimer();
+    }
+
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        var numPages = getNumPages();
+        if (index >= numPages) index = numPages - 1;
+        renderDots();
+        goToPage(index);
+        bindDots();
+      }, 150);
+    });
+
+    init();
+  })();
+</script>
+{% endblock %}
