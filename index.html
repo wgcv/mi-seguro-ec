@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://127.0.0.1:8000/#seguros -->
+<html lang="es" style="--header-height: 116px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="icon" type="image/png" href="http://127.0.0.1:8000/static/img/favicon.png">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0097B2">
+  <meta name="description" content="Asesores de seguros en Ecuador. Seguros individuales, corporativos y masivos.">
+  <title>Inicio | Mi Seguro
+EC</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./index_files/css2" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="./index_files/lucide@latest"></script>
+
+  <link rel="stylesheet" href="./index_files/style.css">
+
+  
+</head>
+<body>
+
+  
+<!-- ============================================
+     NAVBAR (partials/navbar.html)
+     ============================================ -->
+<header class="site-header">
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-group">
+        <!-- Address & hours (swappable) -->
+        <span class="topbar-item" id="topbarAddress">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" aria-hidden="true" class="lucide lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>Av. Malecón Simón Bolívar &amp; Calle Roca</span>
+        </span>
+        <span class="topbar-item" id="topbarHours">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clock" aria-hidden="true" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+          <span>Lun - Vie 8:30 - 17:00</span>
+        </span>
+        <span class="topbar-item" id="topbarPhone">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" aria-hidden="true" class="lucide lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+          <a href="tel:0993886877"><span>0993886877</span></a>
+        </span>
+      </div>
+      <div class="topbar-group">
+        
+        <!-- City selector dropdown -->
+        <div class="topbar-city-dropdown" id="cityDropdown">
+          <button class="topbar-city-btn" id="cityDropdownBtn" aria-haspopup="listbox" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" aria-hidden="true" style="width:12px;height:12px" class="lucide lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span id="cityDropdownLabel">Guayaquil</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down topbar-chevron" style="width:11px;height:11px"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <ul class="topbar-city-menu" role="listbox" id="cityDropdownMenu">
+            <li role="option" class="topbar-city-option active" data-city="guayaquil">Guayaquil</li>
+            <li role="option" class="topbar-city-option" data-city="manabi">Manabí</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var cityData = {
+        guayaquil: {
+          address: 'Av. Malecón Simón Bolívar & Calle Roca',
+          hours:   'Lun - Vie 8:30 - 17:00',
+          phone:   '0993886877',
+        },
+        manabi: {
+          address: 'Av. Marcos Aray & Principal',
+          hours:   'Lun - Vie 8:30 - 17:00',
+          phone:   '0993886877',
+        },
+      };
+
+      var btn   = document.getElementById('cityDropdownBtn');
+      var menu  = document.getElementById('cityDropdownMenu');
+      var label = document.getElementById('cityDropdownLabel');
+
+      function setCity(city) {
+        var d = cityData[city];
+        document.querySelector('#topbarAddress span').textContent = d.address;
+        document.querySelector('#topbarHours span').textContent   = d.hours;
+        document.querySelector('#topbarPhone span').textContent   = d.phone;
+        label.textContent = city.charAt(0).toUpperCase() + city.slice(1);
+        menu.querySelectorAll('.topbar-city-option').forEach(function (el) {
+          el.classList.toggle('active', el.dataset.city === city);
+        });
+        closeMenu();
+      }
+
+      function openMenu()  { btn.setAttribute('aria-expanded', 'true');  menu.classList.add('open'); }
+      function closeMenu() { btn.setAttribute('aria-expanded', 'false'); menu.classList.remove('open'); }
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        menu.classList.contains('open') ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('.topbar-city-option').forEach(function (el) {
+        el.addEventListener('click', function () { setCity(el.dataset.city); });
+      });
+
+      document.addEventListener('click', closeMenu);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+    })();
+  </script>
+
+  <!-- Main Navbar -->
+  <nav class="navbar">
+    <div class="container">
+
+      <!-- Logo -->
+      <a href="http://127.0.0.1:8000/" class="logo">
+        <img src="./index_files/logo.png" alt="Mi Seguro">
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links">
+        <li><a href="http://127.0.0.1:8000/#home">Home</a></li>
+        <li><a href="http://127.0.0.1:8000/#seguros">Seguros</a></li>
+        <li><a href="http://127.0.0.1:8000/#contacto">Contacto</a></li>
+      </ul>
+
+
+      <!-- Mobile Toggle -->
+      <button id="mobile-toggle" class="mobile-toggle" aria-label="Abrir menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" aria-hidden="true" id="menu-icon-open" style="width:24px;height:24px" class="lucide lucide-menu"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" id="menu-icon-close" style="width:24px;height:24px;display:none" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <ul>
+        <li><a href="http://127.0.0.1:8000/#home">Home</a></li>
+        <li><a href="http://127.0.0.1:8000/#seguros">Seguros</a></li>
+        <li><a href="http://127.0.0.1:8000/#contacto">Contacto</a></li>
+      </ul>
+      <!--  FOOTER MOBILE MENU INFO
+      <div class="mobile-menu-info">
+        <span><i data-lucide="map-pin" style="width:12px;height:12px"></i> Av. Malecón Simón Bolívar & Calle Roca</span>
+        <span><i data-lucide="phone" style="width:12px;height:12px"></i>0993886877</span>
+      </div>
+       -->
+    </div>
+  </nav>
+</header>
+
+
+  <main>
+    
+
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<section id="home" class="hero">
+  <div class="hero-bg">
+    <img src="./index_files/hero.jpg" alt="Familia protegida por seguros Mi Seguro">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="text-balance">Mi Seguro<br>Ecuador</h1>
+      <p>Contra daños parciales y pérdidas totales.</p>
+      <div class="hero-buttons">
+        <a href="http://127.0.0.1:8000/#seguros" class="btn btn-primary">Más Info</a>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIVACY BANNER
+     ============================================ -->
+<section class="privacy-banner">
+  <div class="container">
+    <div class="privacy-left">
+      <div>
+        <h3>Profesionales con más de 10 años de experiencia.</h3>
+        <a href="http://127.0.0.1:8000/#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" style="width: 16px; height: 16px" class="lucide lucide-file-text"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+          Ver pdf con todos nuestros servicios y coberturas.
+        </a>
+      </div>
+    </div>
+    <div class="privacy-right">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" aria-hidden="true" style="width: 16px; height: 16px" class="lucide lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+      <span>Información:</span>
+      <a href="http://127.0.0.1:8000/#" onclick="
+          navigator.clipboard.writeText(&#39;info@miseguro.com.ec&#39;);
+          this.textContent = &#39;Se copio el correo a tu portapapeles&#39;;
+          setTimeout(() =&gt; (this.textContent = &#39;info@miseguro.com.ec&#39;), 2000);
+          return false;
+        ">info@miseguro.com.ec</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     INSURANCE CATEGORIES
+     ============================================ -->
+<section class="categories">
+  <div class="container">
+    <div class="categories-grid">
+      <a href="http://127.0.0.1:8000/#seguros" class="category-card">
+        <div class="category-card-img">
+          <img src="./index_files/family.jpg" alt="Seguros Individuales">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <h3>Seguros Individuales</h3>
+          <p>Te asesoramos en planes de seguros personales.</p>
+        </div>
+      </a>
+      <a href="http://127.0.0.1:8000/#seguros" class="category-card">
+        <div class="category-card-img">
+          <img src="./index_files/massive.jpg" alt="Seguros Masivos">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <h3>Seguros Masivos</h3>
+          <p>
+            Contáctanos para mayor información sobre cobertura
+            grupal.
+          </p>
+        </div>
+      </a>
+      <a href="http://127.0.0.1:8000/#seguros" class="category-card">
+        <div class="category-card-img">
+          <img src="./index_files/corporative.jpg" alt="Seguros Corporativos">
+          <div class="category-card-overlay"></div>
+        </div>
+        <div class="category-card-content">
+          <h3>Seguros Corporativos</h3>
+          <p>Te ofrecemos la mejor oferta de seguros empresariales.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     RAMOS DE SEGUROS
+     ============================================ -->
+<section id="seguros" class="ramos">
+  <div class="container">
+    <h2 class="text-balance">Ramos de Seguros</h2>
+    <div class="ramos-grid">
+      <div class="ramo-card">
+        <div class="ramo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield" aria-hidden="true" class="lucide lucide-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></div>
+        <h3>Seguro de Desgravamen</h3>
+        <p>
+          Ante pago por tu deuda no se pueda cobrar a proteger a tu familia.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="car" aria-hidden="true" class="lucide lucide-car"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></div>
+        <h3>Seguro de vehículo</h3>
+        <p>
+          Ampara la pérdida material de los objetos asegurados, producida
+          por un robo.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="package" aria-hidden="true" class="lucide lucide-package"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg></div>
+        <h3>Seguro de Garantía Aduanera</h3>
+        <p>
+          Ampara la falta de pago de derechos arancelarios, tasas, intereses y
+          multas.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="tractor" aria-hidden="true" class="lucide lucide-tractor"><path d="m10 11 11 .9a1 1 0 0 1 .8 1.1l-.665 4.158a1 1 0 0 1-.988.842H20"></path><path d="M16 18h-5"></path><path d="M18 5a1 1 0 0 0-1 1v5.573"></path><path d="M3 4h8.129a1 1 0 0 1 .99.863L13 11.246"></path><path d="M4 11V4"></path><path d="M7 15h.01"></path><path d="M8 10.1V4"></path><circle cx="18" cy="18" r="2"></circle><circle cx="7" cy="15" r="5"></circle></svg></div>
+        <h3>Seguro Agropecuario</h3>
+        <p>
+          Protege tu inversión frente a pérdidas y daños
+          imprevisibles en tus cultivos.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building" aria-hidden="true" class="lucide lucide-building"><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M12 6h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M16 6h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path><path d="M8 6h.01"></path><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path><rect x="4" y="2" width="16" height="20" rx="2"></rect></svg></div>
+        <h3>Seguro de Obras Civiles Terminadas</h3>
+        <p>
+          Indemnización sobre los daños y pérdidas que los
+          bienes asegurados sufran.
+        </p>
+      </div>
+      <div class="ramo-card">
+        <div class="ramo-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="landmark" aria-hidden="true" class="lucide lucide-landmark"><path d="M10 18v-7"></path><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"></path><path d="M14 18v-7"></path><path d="M18 18v-7"></path><path d="M3 22h18"></path><path d="M6 18v-7"></path></svg></div>
+        <h3>Bancos e Instituciones Financieras</h3>
+        <p>
+          Seguro especializado sobre estafas, falsificación de seguros
+          contra actos dolosos.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     A TU LADO BANNER
+     ============================================ -->
+<section class="a-tu-lado">
+  <div class="a-tu-lado-bg">
+    <img src="./index_files/hero-2.jpg" alt="Familia feliz - Mi Seguro siempre a tu lado">
+    <div class="a-tu-lado-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="a-tu-lado-content">
+      <h2 class="text-balance">
+        A tu lado,<br>en cada momento acompañándote.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TESTIMONIALS
+     ============================================ -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="text-balance">Testimonios</h2>
+    <div class="testimonials-carousel">
+      <div class="testimonials-viewport">
+        <div class="testimonials-track" style="transform: translate3d(0px, 0px, 0px);">
+          <!-- testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              
+              <div>
+                <div class="testimonial-name">Giancarlo Zunino</div>
+                <div class="testimonial-role">Gerente General</div>
+                <div class="testimonial-role">Investcamp</div>
+              </div>
+            </div>
+            <div class="testimonial-quote">
+              <svg class="quote-icon" viewBox="0 0 24 24">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+              <p>
+                Nuestro aliado en todo momento. Nuestros seguros empresariales
+                están definitivamente en buenas manos.
+              </p>
+            </div>
+          </div>
+          <!-- testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div>
+                <div class="testimonial-name">Magdalena Murillo</div>
+                <div class="testimonial-role">Directora ejecutiva</div>
+                <div class="testimonial-role">M&amp;M Audvisory Partners</div>
+              </div>
+            </div>
+            <div class="testimonial-quote">
+              <svg class="quote-icon" viewBox="0 0 24 24">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+              <p>Excelente soporte comercial y de servicio al cliente.</p>
+            </div>
+          </div>
+          <!-- testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div>
+                <div class="testimonial-name">Víctor Morales</div>
+                <div class="testimonial-role">Seguro de Salud Privado</div>
+              </div>
+            </div>
+            <div class="testimonial-quote">
+              <svg class="quote-icon" viewBox="0 0 24 24">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+              <p>Mi seguro médico cubrió los gastos de emergencia de mi esposa. Mi Seguro Ecuador estuvo en todo momento. No dudé en contratar el plan también para mí y para mi hija. Ahora dormimos tranquilos, sabiendo que nuestra salud está en buenas manos.</p>
+            </div>
+          </div>
+          <!-- testimonial 4 -->
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div>
+                <div class="testimonial-name">Carlos Carrillo</div>
+                <div class="testimonial-role">Seguro de Salud Privado</div>
+              </div>
+            </div>
+            <div class="testimonial-quote">
+              <svg class="quote-icon" viewBox="0 0 24 24">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path>
+                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path>
+              </svg>
+              <p>Sufrí una rotura severa de ligamentos; jamás pensé que fuera a suceder. Hoy le doy gracias a Mi Seguro Ecuador por proteger mi patrimonio ante una cirugía que habría devastado mi economía.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="testimonials-dots" aria-hidden="true"><span class="testimonials-dot active" data-index="0" aria-label="Página 1 de 2"></span><span class="testimonials-dot" data-index="1" aria-label="Página 2 de 2"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PARTNERS
+     ============================================ -->
+<section class="partners">
+  <div class="container">
+    <h2 class="partners-title">Nuestros aliados</h2>
+    <div class="partners-row">
+      <span class="partner-name">Seguros Alianza</span>
+      <span class="partner-name">Seguros Cóndor</span>
+      <span class="partner-name">Sweaden</span>
+      <span class="partner-name">Hispana de Seguros</span>
+      <span class="partner-name">VAZ Seguros</span>
+      <span class="partner-name">AIG</span>
+      <span class="partner-name">Humana</span>
+      <span class="partner-name">Asisken</span>
+      <span class="partner-name">BMI</span>
+      <span class="partner-name">SaludSA</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CTA BANNER
+     ============================================ -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>
+      Ayudamos a nuestros clientes a actuar<br>
+      <span class="subtitle">de la mejor manera ante cualquier siniestro</span>
+    </h2>
+  </div>
+</section>
+
+<!-- ============================================
+     NEWS / NOTICIAS
+     ============================================ -->
+ 
+  </main>
+
+  
+<!-- ============================================
+     FOOTER (partials/footer.html)
+     ============================================ -->
+<footer id="contacto" class="site-footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Column 1: About -->
+        <div class="footer-col footer-about">
+          <a href="http://127.0.0.1:8000/" class="logo" style="margin-bottom:1rem;display:inline-flex">
+            <div class="logo-icon" style="width:2rem;height:2rem;font-size:0.875rem">G</div>
+            <span style="color:#fff;font-family:var(--font-heading);font-weight:700;font-size:1.125rem">Mi Seguro</span>
+          </a>
+          <p>
+            Mi Seguro es tu aliado para contratar cualquier tipo de póliza de seguros.
+            Nuestra empresa cumple la función de representante de Asesoría Técnica y Personalizada,
+            ajustada a tu medida y a tus necesidades.
+          </p>
+        </div>
+
+        <!-- Column 2: Recent Posts -->
+        <div class="footer-col">
+          
+        </div>
+
+        <!-- Column 3: Extra Links -->
+        <div class="footer-col">
+          
+        </div>
+
+        <!-- Column 4: Search & Contact -->
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <div class="footer-contact">
+            <span class="footer-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" aria-hidden="true" class="lucide lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Av. Malecón Simón Bolívar &amp; Calle Roca
+            </span>
+            <span class="footer-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" aria-hidden="true" class="lucide lucide-phone"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+              0993886877
+            </span>
+            <span class="footer-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" aria-hidden="true" class="lucide lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+              info@miseguro.com.ec
+            </span>
+            <span class="footer-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clock" aria-hidden="true" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+              Lun - Vie 8:30 - 17:00
+            </span>
+            <span class="footer-contact-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="briefcase" aria-hidden="true" class="lucide lucide-briefcase"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+              Trabaja con Nosotros: rrhh@miseguro.com.ec
+            </span>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="social-links" style="margin-top:0">
+        <a href="https://www.facebook.com/p/Mi-Seguro-Ecuador-100063721834956/" class="social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" aria-hidden="true" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        
+        
+        <a href="https://www.instagram.com/miseguroecu" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" aria-hidden="true" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
+        
+      </div>
+      <p>© <span id="footer-year">2026</span><script>document.getElementById('footer-year').textContent=new Date().getFullYear()</script> Copyright Mi Seguro By Pepperloop</p>
+      <p></p>
+    </div>
+  </div>
+</footer>
+
+  <!-- ============================================
+     WHATSAPP BUTTON (partials/whatsapp.html)
+     ============================================ -->
+<a href="https://wa.me/593993886877" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" aria-hidden="true" class="lucide lucide-message-circle"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>
+</a>
+
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <!-- Sync main padding-top with actual fixed header height -->
+  <script>
+    (function () {
+      function updateHeaderOffset() {
+        var h = document.querySelector('.site-header');
+        if (h) {
+          document.documentElement.style.setProperty('--header-height', h.offsetHeight + 'px');
+        }
+      }
+      updateHeaderOffset();
+      window.addEventListener('resize', updateHeaderOffset);
+    })();
+  </script>
+
+  <!-- Mobile Menu Toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.getElementById('mobile-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+
+      if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+          menu.classList.toggle('is-open');
+          const isOpen = menu.classList.contains('is-open');
+          openIcon.style.display = isOpen ? 'none' : 'block';
+          closeIcon.style.display = isOpen ? 'block' : 'none';
+          toggle.setAttribute('aria-label', isOpen ? 'Cerrar menu' : 'Abrir menu');
+        });
+
+        // Close menu on link click
+        menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.remove('is-open');
+            openIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+          });
+        });
+      }
+    });
+  </script>
+
+  
+<script>
+  (function () {
+    var viewport = document.querySelector(".testimonials-viewport");
+    var track = document.querySelector(".testimonials-track");
+    var dotsContainer = document.querySelector(".testimonials-dots");
+    if (!viewport || !track || !dotsContainer) return;
+
+    var cards = track.querySelectorAll(".testimonial-card");
+    var total = cards.length;
+    if (total === 0) return;
+
+    function getPerView() {
+      return window.matchMedia("(min-width: 768px)").matches ? 2 : 1;
+    }
+
+    function getNumPages() {
+      return Math.ceil(total / getPerView()) || 1;
+    }
+
+    function renderDots() {
+      dotsContainer.innerHTML = "";
+      var numPages = getNumPages();
+      if (numPages <= 1) return;
+      for (var i = 0; i < numPages; i++) {
+        var dot = document.createElement("span");
+        dot.className = "testimonials-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("data-index", i);
+        dot.setAttribute(
+          "aria-label",
+          "P\u00e1gina " + (i + 1) + " de " + numPages,
+        );
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    var index = 0;
+    var interval = 5000;
+    var timer;
+    var dots;
+
+    function goToPage(i) {
+      var numPages = getNumPages();
+      var perView = getPerView();
+      index = Math.max(0, Math.min(i, numPages - 1));
+      var isLastPageSingle =
+        numPages > 1 &&
+        perView === 2 &&
+        total % 2 === 1 &&
+        index === numPages - 1;
+      track.classList.toggle("last-page-single", isLastPageSingle);
+
+      var offsetPx = 0;
+      if (numPages > 1 && cards[index * perView]) {
+        offsetPx = cards[index * perView].offsetLeft;
+      }
+      track.style.transform = "translate3d(-" + offsetPx + "px, 0, 0)";
+
+      dots = dotsContainer.querySelectorAll(".testimonials-dot");
+      dots.forEach(function (d, j) {
+        d.classList.toggle("active", j === index);
+      });
+    }
+
+    function nextPage() {
+      var numPages = getNumPages();
+      goToPage((index + 1) % numPages);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      if (getNumPages() > 1) {
+        timer = setInterval(nextPage, interval);
+      }
+    }
+
+    function bindDots() {
+      dots = dotsContainer.querySelectorAll(".testimonials-dot");
+      dots.forEach(function (dot) {
+        dot.onclick = function () {
+          var i = parseInt(this.getAttribute("data-index"), 10);
+          goToPage(i);
+          resetTimer();
+        };
+      });
+    }
+
+    function init() {
+      renderDots();
+      goToPage(0);
+      bindDots();
+      resetTimer();
+    }
+
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        var numPages = getNumPages();
+        if (index >= numPages) index = numPages - 1;
+        renderDots();
+        goToPage(index);
+        bindDots();
+      }, 150);
+    });
+
+    init();
+  })();
+</script>
+
+
+
+</body></html>
